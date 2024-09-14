@@ -1,0 +1,106 @@
+/* Company.css */
+.company-header {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    position: relative; /* Ensure relative positioning for child absolute positioning */
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Space between logo and company details */
+  }
+  
+  .logo {
+    width: 60px;
+    height: auto;
+    margin-right: 15px; /* Space between logo and company name */
+  }
+  
+  .company-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #007bff; /* Blue color for the company name */
+  }
+  
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .cart-item {
+    display: flex;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-image {
+    flex: 0 0 120px; /* Fixed width for the image column */
+    height: auto;
+    margin-right: 15px; /* Space between image and text */
+  }
+  
+  .cart-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .cart-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 5px;
+  }
+  
+  .cart-description {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 15px; /* Space between description and button */
+  }
+  
+  .view-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Aligns the button to the start of its container */
+  }
+  
+  .view-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-button {
+    position: fixed; /* Fixes the button to the viewport */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3;
+  }
+  
