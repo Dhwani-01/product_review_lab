@@ -1,36 +1,52 @@
-/* Centering the home company content */
-.home-company-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-    padding: 20px;
+/* Overall page styling */
+.home-company-container { /* Center horizontally */
+    align-items: left; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f4f4f4; /* Light background color for the page */
+    padding: 20px; /* Padding around the content */
   }
   
-  /* Styling the content wrapper */
+  /* Styling the profile box */
   .home-company-content {
-    background-color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Full width of its container */
+    max-width: 800px; /* Maximum width of the profile box */
+    background-color: #ffffff; /* White background for the profile box */
+    text-align: left; /* Align text to the left for a profile layout */
   }
   
   /* Styling the headings */
   .home-company-content h1 {
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 24px;
   }
   
   /* Styling the paragraphs */
   .home-company-content p {
     color: #555;
     font-size: 16px;
-    margin: 10px 0;
+    margin: 8px 0;
+  }
+  
+  /* Button styling */
+  .home-company-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center; /* Center text inside button */
+    display: block; /* Ensure button is on its own line */
+  }
+  
+  .home-company-button:hover {
+    background-color: #0056b3;
   }
   
   /* Styling loading and error messages */

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // For programmatic navigation
 import axios from 'axios';  // For making HTTP requests
 import './HomeCompany.css';
 
@@ -6,6 +7,8 @@ const HomeCompany = () => {
   const [company, setCompany] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const navigate=useNavigate();
 
   useEffect(() => {
     const fetchCompanyData = async () => {
@@ -34,6 +37,14 @@ const HomeCompany = () => {
     fetchCompanyData();
   }, []);
 
+  const handleButtonClick = () => {
+    navigate('/eventform');  // Navigate to the /eventform route
+  };
+
+  const handleButtonClick_event = () => {
+    navigate('/company');  // Navigate to the /eventform route
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
@@ -46,6 +57,8 @@ const HomeCompany = () => {
           <p><strong>Type:</strong> {company.type}</p>
           <p><strong>Year of Establishment:</strong> {company.year_of_establishment}</p>
           <p><strong>Other Details:</strong> {company.other_detail}</p>
+          <button onClick={handleButtonClick} className="home-company-button">Add Event</button>
+          <button onClick={handleButtonClick_event} className="home-company-button">Event</button>
         </>
       ) : (
         <p>Company not found</p>

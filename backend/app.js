@@ -20,6 +20,9 @@ mongoose.connect(process.env.MONGO_URI, {
 const companyRoutes = require('./routes/companyRoutes');
 app.use('/api/companies', companyRoutes);
 
+const eventRoutes = require('./routes/eventRoutes');
+app.use('/api/events',  eventRoutes);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
