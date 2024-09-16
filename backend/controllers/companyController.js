@@ -1,5 +1,6 @@
 const Company = require('../models/Company');
 const jwt = require('jsonwebtoken');
+// const config = require('config');
 
 // Generate JWT Token
 const generateToken = (id) => {
@@ -54,4 +55,24 @@ const authCompany = async (req, res) => {
   }
 };
 
-module.exports = { registerCompany, authCompany };
+const getCompanyByToken = async (req, res) => {
+    try {
+      const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
+      if (!token) return res.status(401).json({ message: 'Token required' });
+  
+      jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+        if (err) return res.status(403).json({ message: 'Invalid token' });
+  
+        const company = await Company.findById(decoded.id); // Assuming the token has the company ID
+        if (!company) {
+          return res.status(404).json({ message: 'Company not found' });
+        }
+        res.json(company);
+      });
+    } catch (error) {
+      console.error('Error fetching company:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  };
+
+module.exports = { registerCompany, authCompany, getCompanyByToken };

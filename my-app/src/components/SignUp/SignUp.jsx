@@ -83,6 +83,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import './SignUp.css';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -109,9 +110,9 @@ const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className="signup-form-container">
       <h2>Company Sign Up</h2>
-      <form onSubmit={onSubmit}>
+      <form className="signup-form" onSubmit={onSubmit}>
         <input
           type="text"
           name="name"
@@ -153,7 +154,6 @@ const SignUp = () => {
         />
         <button type="submit">Sign Up</button>
       </form>
-      <button type="submit" className="signup-btn"><a href="/company">Sign Up</a></button>
         <p>Aldready have account</p>
       <button ><a href="/login" className="signup-btn">Login</a></button>
       {message && <p>{message}</p>}

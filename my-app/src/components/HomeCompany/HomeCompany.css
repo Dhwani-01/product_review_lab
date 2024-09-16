@@ -1,0 +1,42 @@
+/* Centering the home company content */
+.home-company-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  /* Styling the content wrapper */
+  .home-company-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  /* Styling the headings */
+  .home-company-content h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling the paragraphs */
+  .home-company-content p {
+    color: #555;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  /* Styling loading and error messages */
+  .home-company-content p.loading,
+  .home-company-content p.error {
+    color: #d9534f;
+    font-weight: bold;
+  }
+  

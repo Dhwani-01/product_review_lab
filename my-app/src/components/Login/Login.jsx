@@ -59,6 +59,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
+import './Login.css'; 
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -66,6 +68,8 @@ const Login = () => {
     password: '',
   });
   const [message, setMessage] = useState('');
+
+  const navigate = useNavigate();  
 
   const { name, password } = formData;
 
@@ -77,15 +81,18 @@ const Login = () => {
       const res = await axios.post('http://localhost:5000/api/companies/login', formData);
       setMessage(`Login successful! Welcome, ${res.data.name}`);
       localStorage.setItem('token', res.data.token);
+
+      navigate(`/me`);
     } catch (error) {
       setMessage('Invalid login credentials');
     }
   };
 
   return (
-    <div>
+    <div className='login-container'>
+      
+      <form className='login-form' onSubmit={onSubmit}>
       <h2>Company Login</h2>
-      <form onSubmit={onSubmit}>
         <input
           type="text"
           name="name"

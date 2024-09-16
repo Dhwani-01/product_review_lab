@@ -1,58 +1,86 @@
 /* Centering the sign-up form on the page */
-.signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  /* Styling the form */
-  .signup-form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-  }
-  
-  .signup-form h2 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Styling the form fields */
-  .signup-form label {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-  }
-  
-  .signup-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  /* Styling the sign-up button */
-  .signup-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .signup-btn:hover {
-    background-color: #45a049;
-  }
-  
+.signup-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.signup-form h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Styling the form */
+.signup-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="number"],
+.signup-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Add focus effect to inputs */
+.signup-form input[type="text"]:focus,
+.signup-form input[type="number"]:focus,
+.signup-form input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Button styles */
+.signup-form button[type="submit"],
+.signup-form .signup-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.signup-form .signup-btn {
+  background-color: #007bff;
+}
+
+/* Button hover effect */
+.signup-form button[type="submit"]:hover,
+.signup-form .signup-btn:hover {
+  background-color: #45a049;
+}
+
+.signup-form a {
+  color: white;
+  text-decoration: none;
+}
+
+.signup-form a:hover {
+  text-decoration: underline;
+}
+
+/* Message styling */
+.signup-form p {
+  margin-top: 10px;
+  color: #007bff;
+  font-size: 0.9rem;
+}
