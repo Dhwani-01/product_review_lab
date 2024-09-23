@@ -104,3 +104,8 @@
     background-color: #0056b3;
   }
   
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Distributes buttons evenly */
+    gap: 10px; /* Adds space between buttons */
+  }

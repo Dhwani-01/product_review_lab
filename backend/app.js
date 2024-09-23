@@ -23,6 +23,9 @@ app.use('/api/companies', companyRoutes);
 const eventRoutes = require('./routes/eventRoutes');
 app.use('/api/events',  eventRoutes);
 
+const formRoutes = require('./routes/formRoutes');
+app.use('/api/forms', formRoutes);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

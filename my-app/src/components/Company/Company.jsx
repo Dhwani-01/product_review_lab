@@ -47,6 +47,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Company.css';
+import { useNavigate } from 'react-router-dom'; 
 import Amazon_logo from '../../Assets/Amazon_logo.png';
 import Amazon_Wow from '../../Assets/Amazon_Wow.jpeg';
 
@@ -54,6 +55,7 @@ const Company = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate=useNavigate();
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -85,6 +87,13 @@ const Company = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
+  const handleButtonClick = (eventId) => {
+    // navigate('/formBuilder' );  // Navigate to the /eventform route
+    // navigate(`/formBuilder?eventId=${eventId}`); 
+    console.log(eventId)
+    navigate('/formBuilder', { state: { eventId } }); 
+  };
+
   return (
     <div className="company-header">
       <div className="logo-container">
@@ -99,7 +108,12 @@ const Company = () => {
               <div className="cart-content">
                 <h2 className="cart-title">{event.name}</h2>
                 <p className="cart-description">{event.details}</p>
-                <button className="view-button">View</button>
+                <div className="button-container">
+                {/* <button className="view-button" onClick={handleButtonClick}>Create Form</button> */}
+                <button className="view-button" onClick={() => handleButtonClick(event._id)}>Create Form</button>
+                <button className="view-button">Link</button>
+                <button className="view-button">Response Link</button>
+                </div>
               </div>
             </div>
           ))
