@@ -10,8 +10,9 @@ const FormDisplay = () => {
     useEffect(() => {
         const fetchForm = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/forms/${id}`);
+                const response = await axios.get(`http://localhost:5000/api/forms/${id}`);
                 setForm(response.data);
+                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching form:', error);
             }
@@ -24,6 +25,7 @@ const FormDisplay = () => {
 
     return (
         <div>
+            <h1>form</h1>
             <h2>{form.formName}</h2>
             {form.fields.map((field, index) => (
                 <div key={index}>

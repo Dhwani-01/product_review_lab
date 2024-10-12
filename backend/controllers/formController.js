@@ -38,20 +38,25 @@ const createForm = async (req, res) => {
 
   try {
     // Create a new form document
-    const formId = new mongoose.Types.ObjectId(); // Create a unique ID
-    const formLink = `http://localhost:5000/forms/${formId}`; 
+    //const formId = new mongoose.Types.ObjectId(); // Create a unique ID
+    //const formLink = `http://localhost:3000/forms/${formId}`; 
 
     const newForm = new Form({
       eventId,
       formName,
       fields, // Ensure fields match the structure defined in the model
       tableColumns, // Table columns derived from field labels
-      link: formLink,
     });
 
     // Save the form to the database
     await newForm.save();
-    //const formLink = `http://localhost:5000/forms/${newForm._id}`; // Generate link
+    
+    
+    const formLink = `http://localhost:3000/forms/${newForm._id}`; // Generate link
+
+    newForm.link = formLink;
+    await newForm.save(); // Save again with the updated link
+
     res.status(201).json({ message: 'Form created successfully', form: newForm, link: formLink });
     // Return success response
    // res.status(201).json({ message: 'Form created successfully', form: newForm });
@@ -62,8 +67,8 @@ const createForm = async (req, res) => {
 };
 
 const getForm = async (req, res) => {
+  console.log('getForm function called'); 
   const { id } = req.params;
-
   try {
     const form = await Form.findById(id);
     if (!form) {
@@ -77,11 +82,12 @@ const getForm = async (req, res) => {
 };
 
 const getFormById = async (req, res) => {
+  console.log('getFormBYID function called'); 
   const formId = req.params.id;
 
   try {
     const form = await Form.findById(formId);
-    
+    console.log(form)
     if (!form) {
       return res.status(404).json({ message: 'Form not found' });
     }

@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/eventform" element={<EventForm />} />
         <Route path="/me" element={<HomeCompany />} />
         <Route path="/formbuilder" element={<FormBuilder />} />
-        <Route path="/forms/:id" component={FormDisplay} />
+        <Route path="/forms/:id" element={<FormDisplay/>} />
 
         {/* Add more routes as needed */}
       </Routes>

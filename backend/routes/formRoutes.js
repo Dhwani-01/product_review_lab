@@ -9,9 +9,9 @@ const router = express.Router();
 router.post('/', createForm);
 
 // Submit a form response
-router.post('/:formId/responses', submitResponse);
+//router.post('/:formId/responses', submitResponse);
 
-router.get('/forms/:id', getForm); 
+//router.get('/forms/:id', getForm); 
 
 router.get('/:id',getFormById);
 
