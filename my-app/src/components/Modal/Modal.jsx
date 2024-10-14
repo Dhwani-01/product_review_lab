@@ -6,8 +6,8 @@ const Modal = ({ isOpen, onClose, link }) => {
   return (
     <div style={modalStyles}>
       <div style={modalContentStyles}>
-        <h2>Form Created!</h2>
-        <p>Your form has been created successfully.</p>
+        <h2>Link Created!</h2>
+        <p>Your link has been created successfully.</p>
         <p>
           You can view it here: <a href={link} target="_blank" rel="noopener noreferrer">Open Form</a>
         </p>

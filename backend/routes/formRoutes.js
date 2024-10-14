@@ -1,6 +1,6 @@
 // routes/formRoutes.js
 const express = require('express');
-const { createForm, getForm, getFormById } = require('../controllers/formController');
+const { createForm, getFormByEventId, getFormById } = require('../controllers/formController');
 const { submitResponse } = require('../controllers/formResponseController');
 
 const router = express.Router();
@@ -11,7 +11,7 @@ router.post('/', createForm);
 // Submit a form response
 //router.post('/:formId/responses', submitResponse);
 
-//router.get('/forms/:id', getForm); 
+router.get('/event/:id', getFormByEventId); 
 
 router.get('/:id',getFormById);
 

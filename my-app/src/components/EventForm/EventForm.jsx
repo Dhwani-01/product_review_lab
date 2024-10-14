@@ -89,7 +89,7 @@ const EventForm = () => {
         return;
       }
 
-      await axios.post('http://localhost:5000/api/events', formData, {
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/api/events`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`  // Send token in Authorization header
         }

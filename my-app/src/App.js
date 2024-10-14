@@ -9,6 +9,7 @@ import EventForm from './components/EventForm/EventForm';
 import HomeCompany from './components/HomeCompany/HomeCompany';
 import FormBuilder from './components/FormBuilder/FormBuilder';
 import FormDisplay from './components/FormDisplay/FormDisplay';
+import ResponseDisplay from './components/ResponseDisplay/ResponseDisplay';
 
 const App = () => {
   return (
@@ -21,8 +22,9 @@ const App = () => {
         <Route path="/company" element={<Company />} />
         <Route path="/eventform" element={<EventForm />} />
         <Route path="/me" element={<HomeCompany />} />
-        <Route path="/formbuilder" element={<FormBuilder />} />
+        <Route path="/formbuilder/:eventid" element={<FormBuilder />} />
         <Route path="/forms/:id" element={<FormDisplay/>} />
+        <Route path="/responses/:eventId" element={<ResponseDisplay/>} />
 
         {/* Add more routes as needed */}
       </Routes>

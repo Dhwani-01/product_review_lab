@@ -667,7 +667,7 @@ const FormBuilder = () => {
     console.log("Payload:", payload);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/forms', payload, {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/forms`, payload, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -750,6 +750,14 @@ const FormBuilder = () => {
                     ))}
                   </select>
                 )}
+                {field.type === 'checkbox-group' && ( // Add the checkbox group
+                  field.options.map((option, i) => (
+                    <div key={i}>
+                      <input type="checkbox" name={field.label} value={option} />
+                      <label>{option}</label>
+                    </div>
+                  ))
+                )}
                 {field.type === 'rating' && (
                   <div className="rating">
                     {[...Array(field.max)].map((_, i) => (
@@ -801,7 +809,8 @@ const FormBuilder = () => {
             <Modal 
               isOpen={modalOpen} 
               onClose={() => setModalOpen(false)} 
-              link={formLink} 
+              link={`${window.location.origin}${formLink}`}
+            //  link={formLink} 
             />
           </>
         ) : (

@@ -78,7 +78,8 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/companies/login', formData);
+     // const res = await axios.post('http://localhost:5000/api/companies/login', formData);
+      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/companies/login`, formData);
       setMessage(`Login successful! Welcome, ${res.data.name}`);
       localStorage.setItem('token', res.data.token);
 

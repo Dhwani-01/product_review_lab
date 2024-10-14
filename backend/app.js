@@ -8,7 +8,13 @@ const app = express();
 app.use(express.json());
 
 const cors = require('cors');
-app.use(cors());
+// app.use(cors());
+
+app.use(cors({
+  origin: '*', // Change this to your frontend's URL for production
+  methods: ['GET', 'POST', 'OPTIONS'], // Add OPTIONS method
+  allowedHeaders: ['Content-Type', 'Authorization'], // Adjust based on what your frontend sends
+}));
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -25,6 +31,9 @@ app.use('/api/events',  eventRoutes);
 
 const formRoutes = require('./routes/formRoutes');
 app.use('/api/forms', formRoutes);
+
+const formResponseRoutes = require('./routes/formResponseRoutes');
+app.use('/api/formresponse', formResponseRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

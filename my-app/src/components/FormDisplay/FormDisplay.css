@@ -1,0 +1,62 @@
+/* Ensure all form inputs are properly styled */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style the checkbox and radio button labels */
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transform: scale(1.2); /* Makes checkboxes and radio buttons more visible */
+}
+
+/* Align checkboxes and radio buttons in rows */
+.checkbox-group,
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+/* Add padding and spacing for labels */
+label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* Button styling */
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Ensure the form layout is responsive */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+/* Add spacing between form fields */
+div {
+    margin-bottom: 15px;
+}

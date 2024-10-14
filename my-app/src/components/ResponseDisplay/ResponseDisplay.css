@@ -1,0 +1,83 @@
+/* Container for all responses */
+.response-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to multiple rows */
+    justify-content: space-between; /* Space out cards evenly */
+  }
+  
+  /* Title */
+  .response-title {
+    text-align: center;
+    font-size: 1.5rem; /* Smaller title font size */
+    font-weight: bold;
+    margin-bottom: 20px; /* Reduced bottom margin */
+    color: #333;
+    width: 100%; /* Full width for title */
+  }
+  
+  /* Each response as a "cart" */
+  .response-cart {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 15px; /* Reduced padding */
+    width: 30%; /* Width set to 30% for 3 cards per row */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Hover effect on the "cart" */
+  .response-cart:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Response header styling */
+  .response-header {
+    font-size: 1.2rem; /* Smaller header font size */
+    font-weight: 600;
+    margin-bottom: 10px; /* Reduced bottom margin */
+    color: #007bff;
+  }
+  
+  /* Styling for each field and value */
+  .response-details p {
+    margin: 5px 0; /* Reduced margin */
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Field label */
+  .response-field {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.9rem; /* Smaller font size for field label */
+  }
+  
+  /* Field value */
+  .response-value {
+    font-size: 0.9rem; /* Smaller font size for field value */
+    color: #555;
+    max-width: 70%;
+    word-wrap: break-word;
+  }
+  
+  /* Divider between responses */
+  hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 10px 0; /* Reduced margin */
+  }
+  
+  /* No responses available */
+  .no-responses {
+    text-align: center;
+    font-size: 1rem; /* Smaller font size */
+    color: #888;
+    margin-top: 20px; /* Reduced top margin */
+  }
+  

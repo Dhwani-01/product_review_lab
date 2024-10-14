@@ -50,11 +50,16 @@ import './Company.css';
 import { useNavigate } from 'react-router-dom'; 
 import Amazon_logo from '../../Assets/Amazon_logo.png';
 import Amazon_Wow from '../../Assets/Amazon_Wow.jpeg';
+import Modal from '../Modal/Modal.jsx';
 
 const Company = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedLink, setSelectedLink] = useState('');
+  const [responseModalOpen, setResponseModalOpen] = useState(false);  // New state for response modal
+  const [selectedResponseLink, setSelectedResponseLink] = useState('');  // State for response link
   const navigate=useNavigate();
 
   useEffect(() => {
@@ -67,7 +72,7 @@ const Company = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:5000/api/events/company-events', {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/events/company-events`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -91,7 +96,47 @@ const Company = () => {
     // navigate('/formBuilder' );  // Navigate to the /eventform route
     // navigate(`/formBuilder?eventId=${eventId}`); 
     console.log(eventId)
-    navigate('/formBuilder', { state: { eventId } }); 
+    // navigate('/formBuilder', { state: { eventId } }); 
+    navigate(`/formBuilder/${eventId}` , { state: { eventId } });
+  };
+
+  const handleModalOpen = async (eventId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/forms/event/${eventId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+        // Set the fetched details
+        console.log("response",response)
+        console.log("response data link",response.data[0].link)
+        setSelectedLink(response.data[0].link)
+     // setSelectedLink(`${window.location.origin}${response.data.link}`);
+      setModalOpen(true);  // Open modal after setting the data
+    } catch (error) {
+      console.error('Error fetching event details:', error);
+      setError('Failed to fetch event details');
+    }
+  };
+
+  const handleResponseModalOpen = async (eventId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/formresponse/response/${eventId}/responses`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("RESponse",response.data)
+      //setSelectedResponseLink(response.data[0].responseLink);  // Assuming your backend returns 'responseLink'
+      const responseLink = `/responses/${eventId}`;
+      setSelectedResponseLink(responseLink); 
+      setResponseModalOpen(true);  // Open modal for response link
+    } catch (error) {
+      console.error('Error fetching response link:', error);
+      setError('Failed to fetch response link');
+    }
   };
 
   return (
@@ -111,8 +156,32 @@ const Company = () => {
                 <div className="button-container">
                 {/* <button className="view-button" onClick={handleButtonClick}>Create Form</button> */}
                 <button className="view-button" onClick={() => handleButtonClick(event._id)}>Create Form</button>
-                <button className="view-button">Link</button>
-                <button className="view-button">Response Link</button>
+                
+                <button className="view-button" onClick={() => handleModalOpen(event._id)}>Link</button>
+                {/* <button className="view-button">Link</button> */}
+                {/* <a href={event.link} target="_blank" rel="noopener noreferrer">
+                    <button className="view-button">Link</button>
+                  </a> */}
+                  {/* Modal Component */}
+                {modalOpen && (
+                  <Modal 
+                    isOpen={modalOpen} 
+                    onClose={() => setModalOpen(false)} 
+                    link={`${window.location.origin}${selectedLink}`}  // Passing the selected link to the modal
+                  />
+                )}
+                {/* <button className="view-button">Response Link</button> */}
+                <button className="view-button" onClick={() => handleResponseModalOpen(event._id)}>Response Link</button>
+
+                {/* Response Link Modal */}
+                {responseModalOpen && (
+                    <Modal 
+                      isOpen={responseModalOpen} 
+                      onClose={() => setResponseModalOpen(false)} 
+                      link={`${window.location.origin}${selectedResponseLink}`}  // Passing response link to modal
+                    />
+                  )}
+
                 </div>
               </div>
             </div>

@@ -20,7 +20,7 @@ const HomeCompany = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:5000/api/companies/me', {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/companies/me`, {
           headers: {
             'Authorization': `Bearer ${token}`  // Send token in Authorization header
           }

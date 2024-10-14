@@ -52,7 +52,8 @@ const createForm = async (req, res) => {
     await newForm.save();
     
     
-    const formLink = `http://localhost:3000/forms/${newForm._id}`; // Generate link
+    //const formLink = `http://localhost:3000/forms/${newForm._id}`; // Generate link
+    const formLink = `/forms/${newForm._id}`; 
 
     newForm.link = formLink;
     await newForm.save(); // Save again with the updated link
@@ -66,20 +67,21 @@ const createForm = async (req, res) => {
   }
 };
 
-const getForm = async (req, res) => {
-  console.log('getForm function called'); 
-  const { id } = req.params;
+const getFormByEventId = async (req, res) => {
+  const { id } = req.params; // Event ID passed in the URL
   try {
-    const form = await Form.findById(id);
-    if (!form) {
-      return res.status(404).json({ message: 'Form not found' });
+    const forms = await Form.find({ eventId: id }); // Find forms related to the event ID
+    console.log(forms)
+    if (!forms || forms.length === 0) {
+      return res.status(404).json({ message: 'No forms found for this event.' });
     }
-    res.status(200).json(form);
+    res.status(200).json(forms); // Return all forms related to the event
   } catch (error) {
-    console.error('Error fetching form:', error);
-    res.status(500).json({ message: 'Error fetching form', error });
+    console.error('Error fetching forms by event ID:', error);
+    res.status(500).json({ message: 'Error fetching forms', error: error.message });
   }
 };
+
 
 const getFormById = async (req, res) => {
   console.log('getFormBYID function called'); 
@@ -99,5 +101,5 @@ const getFormById = async (req, res) => {
   }
 };
 
-module.exports = { createForm, getForm, getFormById };
+module.exports = { createForm, getFormByEventId, getFormById };
 
